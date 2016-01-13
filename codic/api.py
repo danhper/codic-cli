@@ -20,11 +20,11 @@ class API(object):
 
     def get_translations(self, base_text):
         query = {'text': base_text, 'casing': self.config.casing}
-        url = self.url('/v1/engine/translate.json')
+        url = self.url('/v1.1/engine/translate.json')
         res = requests.get(url, params=query, headers=self.auth_headers)
         if res.status_code != 200:
             raise codic.CodicException(res.json()['errors'][0]['message'])
-        return {w['text']: [c['text'] for c in w['candidates']]
+        return {w['text']: [c['text_in_casing'] for c in w['candidates']]
                 for v in res.json()
                 for w in v['words']}
 

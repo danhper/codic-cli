@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='codic',
-    version='0.1.0',
+    version='0.1.1',
     description='Codic CLI',
     url='https://github.com/tuvistavie/codic-cli',
 
