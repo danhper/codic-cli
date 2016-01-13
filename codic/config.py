@@ -36,7 +36,9 @@ class Config(object):
 
     def persist(self):
         config = ConfigParser()
-        config.read_dict({'codic': self.config})
+        config.add_section('codic')
+        for key, value in self.config.items():
+            config.set('codic', key, value)
         with open(Config.CODIC_SETTINGS_FILE, 'w') as f:
             config.write(f)
 
